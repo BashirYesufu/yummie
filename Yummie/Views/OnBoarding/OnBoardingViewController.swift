@@ -41,7 +41,11 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         if currentPage == slides.count - 1 {
-            print("Go to the next page!")
+            let controller = storyboard?.instantiateViewController(identifier: "HomeNavigationController") as! UINavigationController
+            
+            controller.modalTransitionStyle = .partialCurl
+            controller.modalPresentationStyle = .fullScreen
+            present(controller, animated: true, completion: nil)
         } else {
         currentPage += 1
         let indexPath = IndexPath(item: currentPage, section: 0)
@@ -65,6 +69,10 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
         let width = scrollView.frame.width
         currentPage = Int(scrollView.contentOffset.x / width)
        
+    }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)  {
+            super.viewWillTransition(to: size, with: coordinator)
+            onBoardingCollectionView.collectionViewLayout.invalidateLayout()
     }
 }
 
