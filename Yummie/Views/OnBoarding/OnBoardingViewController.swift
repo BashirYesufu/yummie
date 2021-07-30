@@ -22,7 +22,6 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
                 nextButton.setTitle("Get Started!", for: .normal)
             } else {
             nextButton.setTitle("Next", for: .normal)
-              
         }
     }
     }
@@ -36,6 +35,7 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
             OnBoardingSlide(title: "Instant World-Wide Delivery", description: "Your orders will be delivered instantly irrespective of your location around the world.", image: #imageLiteral(resourceName: "slide3"))
         ]
        
+        pageControl.numberOfPages = slides.count
         onBoardingCollectionView.delegate = self
         onBoardingCollectionView.dataSource = self
     }
