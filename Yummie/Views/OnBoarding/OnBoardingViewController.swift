@@ -15,7 +15,17 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var pageControl: UIPageControl!
     
     var slides: [OnBoardingSlide] = []
-    var currentPage =  0
+    var currentPage =  0 {
+        didSet {
+            pageControl.currentPage = currentPage
+            if currentPage == slides.count - 1 {
+                nextButton.setTitle("Get Started!", for: .normal)
+            } else {
+            nextButton.setTitle("Next", for: .normal)
+              
+        }
+    }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +40,13 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
         onBoardingCollectionView.dataSource = self
     }
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-        
+        if currentPage == slides.count - 1 {
+            print("Go to the next page!")
+        } else {
+        currentPage += 1
+        let indexPath = IndexPath(item: currentPage, section: 0)
+        onBoardingCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return slides.count
@@ -48,7 +64,7 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let width = scrollView.frame.width
         currentPage = Int(scrollView.contentOffset.x / width)
-        pageControl.currentPage = currentPage
+       
     }
 }
 
