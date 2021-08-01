@@ -211,7 +211,7 @@
                                                             <size key="itemSize" width="128" height="128"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                            <inset key="sectionInset" minX="20" minY="0.0" maxX="40" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells/>
                                                         <connections>
@@ -299,8 +299,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="PopularDishesCollectionView" destination="eey-ux-R72" id="26n-Mx-a9g"/>
                         <outlet property="categoryCollectionView" destination="DvD-EM-R4v" id="DbU-79-bUA"/>
+                        <outlet property="popularDishesCollectionView" destination="eey-ux-R72" id="7nK-II-XG2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6WI-L0-0eh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
